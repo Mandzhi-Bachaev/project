@@ -19,11 +19,12 @@ function secondTask() {
 
     // Пишем решение вот тут
     for (let i = 0; i < data.length; i++) {
-        if (typeof(data[i] == "number")) {
+        if (typeof(data[i]) == "number") {
             data[i] = data[i] * 2;
         } else {
             data[i] = data[i] + " - done";
         }
+        console.log(typeof(data[i]) == "number");
     }
     console.log(data);
     // Не трогаем
