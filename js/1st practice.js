@@ -1,38 +1,84 @@
-const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');
+    }
+}
+
+start();
 
 let personalMovieDB = {
     count: numberOfFilms,
     movies: {},
     actors: {},
     genres: [],
-    privat: false
+    private: false
 };
 
-//movies[as];
 
-const movieName = prompt("Один из просмотренных фильмов", '');
-const movieRating = prompt("На сколько оцените его?", '');
-const movieName1 = prompt("Один из просмотренных фильмов", '');
-const movieRating1 = prompt("На сколько оцените его?", '');
+function rememberMyFilms() {
+    for (let i = 0; i < personalMovieDB.count; i++) {
+        let movieName = prompt("Один из просмотренных фильмов", '');
+        let movieRating = prompt("На сколько оцените его?", '');
+        
+        while (movieName.length === 0 || movieName.length > 50 || movieName == null || movieRating.length === 0 || movieName == null) {
+            movieName = prompt("Один из просмотренных фильмов", '');
+            movieRating = prompt("На сколько оцените его?", '');
+        }
+    
+        personalMovieDB.movies[movieName] = movieRating;
+    }
+}
 
-personalMovieDB.movies[movieName] = movieRating;
-personalMovieDB.movies[movieName1] = movieRating1;
-
-console.log(personalMovieDB);
-
-/* Задание на урок:
-
-1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
-
-2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
-отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
-возвращаем пользователя к вопросам опять
-
-3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
-"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
-"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
-
-4) Потренироваться и переписать цикл еще двумя способами*/
+rememberMyFilms();
 
 
-// Код возьмите из предыдущего домашнего задания
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        alert("Просмотрено довольно мало фильмов");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30){
+        alert("Вы классический зритель");
+    } else if (personalMovieDB.count >= 30) {
+        alert("Вы киноман");
+    } else {
+        alert("Произошла ошибка");
+    }
+}
+
+detectPersonalLevel();
+
+function writeYourGenres() {
+    let answer = '';
+    for (let i = 0; i < 3; i++) {
+        answer = prompt("Ваш любимый жанр под номером " + (i + +1),'');
+        personalMovieDB.genres[i] = answer;
+    }
+}
+writeYourGenres();
+
+function showMyDB() {
+    if (personalMovieDB.private == false) {
+        console.log(personalMovieDB);
+    }
+}
+showMyDB();
+
+// let n = 0;
+
+// while (n < personalMovieDB.count) {
+//     let movieName = prompt("Один из просмотренных фильмов", '');
+//     let movieRating = prompt("На сколько оцените его?", '');
+    
+//     while (movieName == null || movieRating == null || movieName == "" || movieRating == "" || movieName.length > 50) {
+//         console.log('error');
+//         movieName = prompt("Один из просмотренных фильмов", '');
+//         movieRating = prompt("На сколько оцените его?", '');
+//     }
+
+//     personalMovieDB.movies[movieName] = movieRating;
+//     console.log('done');
+//     n++;
+// }
