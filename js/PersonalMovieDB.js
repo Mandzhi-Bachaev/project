@@ -51,10 +51,8 @@ function detectPersonalLevel() {
 detectPersonalLevel();
 
 function writeYourGenres() {
-    let answer = '';
     for (let i = 0; i < 3; i++) {
-        answer = prompt("Ваш любимый жанр под номером " + (i + +1),'');
-        personalMovieDB.genres[i] = answer;
+        personalMovieDB.genres[i] = prompt("Ваш любимый жанр под номером " + (i + +1),'');
     }
 }
 writeYourGenres();
