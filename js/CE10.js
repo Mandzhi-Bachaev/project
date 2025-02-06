@@ -8,20 +8,39 @@ const personalPlanPeter = {
             php: '10%'
         },
         exp: '1 month'
+    },
+    showAgeAndLangs: function() {
+        const {languages} = personalPlanPeter.skills;
+        const {age} = personalPlanPeter;
+        let result = "Мне ";
+        result += `${age} и я владею языками:`;
+        
+        for (let value of languages){
+            result = result + " " + value.toUpperCase();
+        }
+        return result;
     }
 };
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
+
 
 function showExperience(plan) {
-    const {destExp} = plan.skills.exp;
-    return destExp;
+    const {exp} = plan.skills;
+    return exp;
 }
-console.log(showExperience(personalPlanPeter));
+//console.log(showExperience(personalPlanPeter));
+
 
 
 function showProgrammingLangs(plan) {
-
+    const {programmingLangs} = plan.skills;
+    let result = "";
+    for (let key in programmingLangs) {
+        result += `Язык ${key} изучен на ${programmingLangs[key]}\n`;
+    }
+    return result;
 }
-
+console.log(showProgrammingLangs(personalPlanPeter));
 /*
 1) Напишите функцию showExperience, которая будет принимать в себя объект со всеми данными и возвращать строку с опытом.
 

@@ -12,10 +12,10 @@ const options = {
         console.log("Test");
     }
 };
-options.makeTest();
+//options.makeTest();
 
-const {border, bg} = options.colors; //деструктуризация
-console.log(border);
+const {border, background} = options.colors; //деструктуризация
+console.log(background);
 
 //console.log(Object.keys(options).length);
 
@@ -24,18 +24,18 @@ console.log(border);
 // delete options.name; //удаление свойства объекта
 // console.log(options);
 
-// let counter = 0;
+ let counter = 0;
 
-// for (let key in options) {
-//     if (typeof(options[key]) === "object") {
-//         for (let i in options[key]) {
-//             console.log(`Свойствo ${i} имеет значение ${options[key][i]}`);
-//             counter++;
-//         }
-//     } else {
-//         console.log(`Свойствo ${key} имеет значение ${options[key]}`);
-//         counter++;
-//     }
-// }
-// console.log(counter);
+for (let key in options) {
+    if (typeof(options[key]) === "object") {
+        for (let i in options[key]) {
+            console.log(`Свойствo ${i} имеет значение ${options[key][i]}`);
+            counter++;
+        }
+    } else {
+        console.log(`Свойствo ${key} имеет значение ${options[key]}`);
+        counter++;
+    }
+}
+console.log(counter);
 
